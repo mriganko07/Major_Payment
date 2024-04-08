@@ -12,8 +12,4 @@ class Booking extends Model
     protected $table = "bookings";
     protected $primaryKey = "customer_id";
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class, 'customer_id', 'customer_id');
-    }
 }

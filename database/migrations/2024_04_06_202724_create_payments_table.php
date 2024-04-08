@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id('payment_id');
-            $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('customer_id')->on('bookings')->onUpdate('cascade');
-            $table->unsignedBigInteger('booking_id');
-            $table->foreign('booking_id')->references('booking_id')->on('forms')->onUpdate('cascade');
+            $table->unsignedBigInteger('customer_id')->nullable();
+            // $table->foreign('customer_id')->references('customer_id')->on('bookings')->onUpdate('cascade');
+            $table->foreign('customer_id')->references('customer_id')->on('bookings');
+            $table->unsignedBigInteger('booking_id')->nullable();
+            // $table->foreign('booking_id')->references('booking_id')->on('forms')->onUpdate('cascade');
+            $table->foreign('booking_id')->references('booking_id')->on('forms');
             $table->integer('ammount')->default(200);
             $table->enum('paymethod',["upi","card"])->nullable();
             $table->timestamp('current_time');

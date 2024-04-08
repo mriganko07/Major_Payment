@@ -12,8 +12,4 @@ class Form extends Model
     protected $table = "forms";
     protected $primaryKey = "booking_id";
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class, 'booking_id', 'booking_id');
-    }
 }
